@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Much Do You Know About Yemaya? - Free Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #001a33 0%, #003d66 25%, #005a99 50%, #0077cc 75%, #3399dd 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(to top, rgba(255,255,255,0.12), transparent);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Top Header */
+        .top-header {
+            background: linear-gradient(135deg, #003d66 0%, #005a99 50%, #0077cc 100%);
+            border-radius: 25px 25px 0 0;
+            padding: 40px 30px 30px 30px;
+            text-align: center;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+        }
+
+        .top-header h1 {
+            font-size: 2.8em;
+            color: white;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+        }
+
+        .top-header .subtitle {
+            font-size: 1.3em;
+            color: #e8f4f8;
+            font-style: italic;
+        }
+
+        .decorative-symbols {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+            font-size: 2.5em;
+        }
+        
+        .symbol-item {
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+        }
+        
+        .symbol-item:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        
+        .symbol-item:nth-child(3) {
+            animation-delay: 1s;
+        }
+        
+        .symbol-item:nth-child(4) {
+            animation-delay: 1.5s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Email Capture Section - NOW AT TOP */
+        .email-capture-section {
+            background: linear-gradient(135deg, #003d66, #005a99);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+        }
+
+        .email-capture-section h2 {
+            color: white;
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+        }
+
+        .email-capture-section p {
+            color: #e8f4f8;
+            font-size: 1.15em;
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .email-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .email-form input {
+            padding: 18px 25px;
+            font-size: 1.1em;
+            border: 2px solid #0077cc;
+            border-radius: 12px;
+            font-family: 'Georgia', serif;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .email-form input:focus {
+            outline: none;
+            border-color: #3399dd;
+            box-shadow: 0 0 0 3px rgba(51, 153, 221, 0.3);
+            background: white;
+        }
+
+        .email-form button {
+            background: linear-gradient(135deg, #003d66, #0077cc);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.25em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(0, 61, 102, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .email-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 61, 102, 0.5);
+        }
+
+        .privacy-note {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #b3d9f2;
+            font-style: italic;
+        }
+
+        /* Benefits Section - NOW BELOW EMAIL */
+        .benefits-section {
+            background: linear-gradient(135deg, #003d66 0%, #005a99 50%, #0077cc 100%);
+            padding: 40px 30px;
+            border-radius: 0 0 25px 25px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+        }
+
+        .intro-text {
+            font-size: 1.1em;
+            color: #f0f8ff;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto 35px;
+            text-align: center;
+        }
+        
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .benefit-item {
+            background: linear-gradient(135deg, #005a99, #0077cc);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid #e8f4f8;
+            color: white;
+        }
+        
+        .benefit-item .icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .benefit-item h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .benefit-item p {
+            color: #e8f4f8;
+            line-height: 1.6;
+        }
+        
+        /* Quiz Section - Initially Hidden */
+        .quiz-section {
+            display: none;
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+        }
+        
+        .quiz-header {
+            background: linear-gradient(135deg, #003d66 0%, #005a99 50%, #0077cc 100%);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quiz-header::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,255,255,0.2), transparent);
+            border-radius: 50%;
+        }
+        
+        .quiz-header::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(255,255,255,0.15), transparent);
+            border-radius: 50%;
+        }
+        
+        .quiz-header h2 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .quiz-header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 2;
+            font-style: italic;
+        }
+        
+        .quiz-decorative-symbols {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 25px;
+            font-size: 2.5em;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .content {
+            padding: 50px 35px;
+            background: linear-gradient(to bottom, #e8f4f8 0%, #d0e8f2 100%);
+        }
+        
+        .question-block {
+            margin-bottom: 45px;
+            padding: 30px;
+            background: linear-gradient(135deg, #f0f8ff 0%, white 100%);
+            border-radius: 20px;
+            border-left: 6px solid #005a99;
+            box-shadow: 0 8px 20px rgba(0, 90, 153, 0.15);
+            position: relative;
+        }
+        
+        .question-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, transparent 50%, rgba(0, 90, 153, 0.1) 50%);
+            border-radius: 0 20px 0 0;
+        }
+        
+        .question-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #003d66, #0077cc);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-right: 12px;
+            box-shadow: 0 4px 10px rgba(0, 61, 102, 0.4);
+        }
+        
+        .question {
+            font-size: 1.25em;
+            font-weight: bold;
+            color: #003d66;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        
+        .options {
+            display: grid;
+            gap: 15px;
+            margin-left: 52px;
+        }
+        
+        .option {
+            padding: 18px 25px;
+            background: linear-gradient(to right, #e8f4f8, #f0f8ff);
+            border: 2px solid #b3d9f2;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(to right, rgba(0, 90, 153, 0.15), transparent);
+            transition: width 0.3s ease;
+        }
+        
+        .option:hover {
+            border-color: #005a99;
+            transform: translateX(8px);
+            box-shadow: 0 6px 15px rgba(0, 90, 153, 0.25);
+        }
+        
+        .option:hover::before {
+            width: 100%;
+        }
+        
+        .option input[type="radio"] {
+            margin-right: 15px;
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .option label {
+            cursor: pointer;
+            flex-grow: 1;
+            font-size: 1.05em;
+            color: #2d3748;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .submit-section {
+            text-align: center;
+            margin: 50px 0;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #003d66, #0077cc);
+            color: white;
+            border: none;
+            padding: 20px 60px;
+            font-size: 1.3em;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 12px 35px rgba(0, 61, 102, 0.5);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .submit-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 45px rgba(0, 61, 102, 0.6);
+        }
+        
+        .submit-btn span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .results {
+            display: none;
+            padding: 40px;
+            background: linear-gradient(135deg, #005a99 0%, #0077cc 100%);
+            color: white;
+            border-radius: 20px;
+            margin-top: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 90, 153, 0.4);
+        }
+        
+        .results h2 {
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .results .score {
+            font-size: 3.5em;
+            font-weight: bold;
+            margin: 25px 0;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+        }
+        
+        .results .interpretation {
+            font-size: 1.3em;
+            line-height: 1.8;
+            margin-top: 25px;
+            background: rgba(255,255,255,0.15);
+            padding: 25px;
+            border-radius: 15px;
+        }
+        
+        /* Book CTA Section */
+        .book-cta {
+            margin-top: 40px;
+            padding: 40px;
+            background: linear-gradient(135deg, #005a99, #0077cc);
+            border-radius: 20px;
+            text-align: center;
+            border: 3px solid #3399dd;
+        }
+        
+        .book-cta h3 {
+            color: white;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+        }
+        
+        .book-cta p {
+            color: #e8f4f8;
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        
+        .book-cta-button {
+            display: inline-block;
+            background: white;
+            color: #003d66;
+            padding: 18px 45px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .book-cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+            background: #f0f8ff;
+        }
+        
+        .answer-key {
+            margin-top: 50px;
+            padding: 40px;
+            background: linear-gradient(135deg, #005a99, #0077cc);
+            border-radius: 20px;
+            border: 3px solid #3399dd;
+        }
+        
+        .answer-key h3 {
+            color: white;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+        }
+        
+        .answer-item {
+            padding: 15px 25px;
+            margin: 12px 0;
+            background: white;
+            border-radius: 12px;
+            border-left: 5px solid #003d66;
+            font-size: 1.05em;
+            box-shadow: 0 4px 10px rgba(0, 90, 153, 0.1);
+        }
+        
+        .answer-number {
+            font-weight: bold;
+            color: #003d66;
+            margin-right: 12px;
+            font-size: 1.1em;
+        }
+        
+        .scoring-guide {
+            margin-top: 40px;
+            padding: 35px;
+            background: linear-gradient(135deg, #0077cc 0%, #3399dd 100%);
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 119, 204, 0.4);
+        }
+        
+        .scoring-guide h3 {
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .score-range {
+            margin: 18px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            color: #2d3748;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .score-range strong {
+            color: #003d66;
+            font-size: 1.15em;
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.2em;
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .top-header h1 {
+                font-size: 2em;
+            }
+            .email-capture-section h2 {
+                font-size: 1.8em;
+            }
+            .benefits {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Top Header with Title -->
+        <div class="top-header">
+            <h1>🌊 How Much Do You Know About Yemaya? 🌊</h1>
+            <p class="subtitle">Test Your Knowledge of the Mother of the Ocean</p>
+            <div class="decorative-symbols">
+                <span class="symbol-item">🌊</span>
+                <span class="symbol-item">💙</span>
+                <span class="symbol-item">🐚</span>
+                <span class="symbol-item">⭐</span>
+            </div>
+        </div>
+
+        <!-- Email Capture Section - NOW FIRST! -->
+        <div class="email-capture-section" id="emailSection">
+            <h2>Enter Your Details to Start the Quiz</h2>
+            <p>Get instant access to test your knowledge plus receive exclusive insights about Yemaya and updates about our beautiful coffee table book!</p>
+            
+            <form class="email-form" id="emailForm">
+                <input type="text" id="nameInput" placeholder="Your Name" required>
+                <input type="email" id="emailInput" placeholder="Your Email Address" required>
+                <button type="submit">Start My Quiz Now! 🌊</button>
+            </form>
+            
+            <p class="privacy-note">🔒 Your information is safe with us. We respect your privacy.</p>
+        </div>
+
+        <!-- Benefits Section - NOW SECOND -->
+        <div class="benefits-section">
+            <p class="intro-text">
+                Yemaya, the divine mother of all Orishas, rules the vast oceans and embodies unconditional love, 
+                nurturing protection, and profound wisdom. Discover how deep your knowledge truly runs!
+            </p>
+            
+            <div class="benefits">
+                <div class="benefit-item">
+                    <div class="icon">📚</div>
+                    <h3>Learn & Discover</h3>
+                    <p>Deepen your understanding of Yemaya's sacred traditions, symbols, and spiritual wisdom</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="icon">🎯</div>
+                    <h3>Test Your Knowledge</h3>
+                    <p>20 carefully crafted questions covering everything from colors to sacred offerings</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="icon">✨</div>
+                    <h3>Get Personalized Results</h3>
+                    <p>Discover your knowledge level from Initiate to Scholar with detailed feedback</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Section (Hidden Until Email Submitted) -->
+        <div class="quiz-section" id="quizSection">
+            <div class="quiz-header">
+                <h2>The Yemaya Knowledge Quiz</h2>
+                <p>Answer 20 questions to test your knowledge</p>
+                <div class="quiz-decorative-symbols">
+                    <span class="symbol-item">🌊</span>
+                    <span class="symbol-item">💙</span>
+                    <span class="symbol-item">🐚</span>
+                    <span class="symbol-item">⭐</span>
+                </div>
+            </div>
+            
+            <div class="content">
+                <div class="success-message" id="welcomeMessage"></div>
+
+                <form id="quizForm">
+                    <!-- Question 1 -->
+                    <div class="question-block">
+                        <div class="question">
+                            <span class="question-number">1</span>
+                            What are Yemaya's sacred colors?
+                        </div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q1" value="a" id="q1a">
+                                <label for="q1a">A) Yellow and gold</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q1" value="b" id="q1b">
+                                <label for="q1b">B) Blue and white</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q1" value="c" id="q1c">
+                                <label for="q1c">C) Red and black</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q1" value="d" id="q1d">
+                                <label for="q1d">D) Green and brown</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="question-block">
+                        <div class="question">
+                            <span class="question-number">2</span>
+                            What is Yemaya's sacred number?
+                        </div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q2" value="a" id="q2a">
+                                <label for="q2a">A) 3</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q2" value="b" id="q2b">
+                                <label for="q2b">B) 5</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q2" value="c" id="q2c">
+                                <label for="q2c">C) 7</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q2" value="d" id="q2d">
+                                <label for="q2d">D) 9</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="question-block">
+                        <div class="question">
+                            <span class="question-number">3</span>
+                            Yemaya is known as the Mother of All because she:
+                        </div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q3" value="a" id="q3a">
+                                <label for="q3a">A) Created the first humans</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q3" value="b" id="q3b">
+                                <label for="q3b">B) Gave birth to many Orishas and all life originates from her</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q3" value="c" id="q3c">
+                                <label for="q3c">C) Rules over the sun and moon</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q3" value="d" id="q3d">
+                                <label for="q3d">D) Controls all weather patterns</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="question-block">
+                        <div class="question">
+                            <span class="question-number">4</span>
+                            Which symbol is most strongly associated with Yemaya?
+                        </div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q4" value="a" id="q4a">
+                                <label for="q4a">A) The sun</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q4" value="b" id="q4b">
+                                <label for="q4b">B) The anchor, seashells, and waves</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q4" value="c" id="q4c">
+                                <label for="q4c">C) The lightning bolt</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q4" value="d" id="q4d">
+                                <label for="q4d">D) The sword</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="question-block">
+                        <div class="question">
+                            <span class="question-number">5</span>
+                            What day of the week is sacred to Yemaya?
+                        </div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q5" value="a" id="q5a">
+                                <label for="q5a">A) Friday</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q5" value="b" id="q5b">
+                                <label for="q5b">B) Saturday</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q5" value="c" id="q5c">
+                                <label for="q5c">C) Sunday</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q5" value="d" id="q5d">
+                                <label for="q5d">D) Monday</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 6 -->
+                    <div class="question-block">
+                        <div class="question">
+                            <span class="question-number">6</span>
+                            What is a traditional offering to Yemaya?
+                        </div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q6" value="a" id="q6a">
+                                <label for="q6a">A) Red wine and cigars</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q6" value="b" id="q6b">
+                                <label for="q6b">B) Watermelon, molasses, and fish</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q6" value="c" id="q6c">
+                                <label for="q6c">C) Honey and yellow flowers</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q6" value="d" id="q6d">
+                                <label for="q6d">D) Coconut only</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 7 -->
+                    <div class="question-block">
+                        <div class="question">
+                            <span class="question-number">7</span>
+                            While war and battle are primarily associated with Oya and Ogun, which path of Yemaya is known as the warrior aspect?
+                        </div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q7" value="a" id="q7a">
+                                <label for="q7a">A) Yemaya Asesu</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q7" value="b" id="q7b">
+                                <label for="q7b">B) Yemaya Okute</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q7" value="c" id="q7c">
+                                <label for="q7c">C) Yemaya Olokun</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q7" value="d" id="q7d">
+                                <label for="q7d">D) Yemaya Mayelewo</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 8 -->
+                    <div class="question-block">
+                        <div class="question">
+                            <span class="question-number">8</span>
+                            What is the relationship between Yemaya and Oshun?
+                        </div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q8" value="a" id="q8a">
+                                <label for="q8a">A) They are rivals</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q8" value="b" id="q8b">
+                                <label for="q8b">B) They are sisters</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q8" value="c" id="q8c">
+                                <label for="q8c">C) Yemaya is Oshun's daughter</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q8" value="d" id="q8d">
+                                <label for="q8d">D) They are unrelated</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 9 -->
+                    <div class="question-block">
+                        <div class="question">
+                            <span class="question-number">9</span>
+                            Which moon phase is especially connected to Yemaya?
+                        </div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q9" value="a" id="q9a">
+                                <label for="q9a">A) New Moon</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q9" value="b" id="q9b">
+                                <label for="q9b">B) Full Moon</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q9" value="c" id="q9c">
+                                <label for="q9c">C) Waxing Crescent</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q9" value="d" id="q9d">
+                                <label for="q9d">D) Waning Gibbous</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 10 -->
+                    <div class="question-block">
+                        <div class="question">
+                            <span class="question-number">10</span>
+                            How many silver bracelets does Yemaya traditionally wear?
+                        </div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q10" value="a" id="q10a">
+                                <label for="q10a">A) Three</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q10" value="b" id="q10b">
+                                <label for="q10b">B) Five</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q10" value="c" id="q10c">
+                                <label for="q10c">C) Seven</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q10" value="d" id="q10d">
+                                <label for="q10d">D) Nine</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 11 -->
+                    <div class="question-block">
+                        <div class="question">
+                            <span class="question-number">11</span>
+                            Which creatures are sacred to Yemaya?
+                        </div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q11" value="a" id="q11a">
+                                <label for="q11a">A) Peacocks and butterflies</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q11" value="b" id="q11b">
+                                <label for="q11b">B) Fish, ducks, and dolphins</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q11" value="c" id="q11c">
+                                <label for="q11c">C) Snakes and lizards</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q11" value="d" id="q11d">
+                                <label for="q11d">D) Rams and bulls</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 12 -->
+                    <div class="question-block">
+                        <div class="question">
+                            <span class="question-number">12</span>
+                            Yemaya is syncretized in Catholicism with:
+                        </div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q12" value="a" id="q12a">
+                                <label for="q12a">A) Our Lady of Guadalupe</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q12" value="b" id="q12b">
+                                <label for="q12b">B) Our Lady of Regla</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q12" value="c" id="q12c">
+                                <label for="q12c">C) Our Lady of Charity</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q12" value="d" id="q12d">
+                                <label for="q12d">D) St. Barbara</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 13 -->
+                    <div class="question-block">
+                        <div class="question">
+                            <span class="question-number">13</span>
+                            What body of water does Yemaya rule over?
+                        </div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q13" value="a" id="q13a">
+                                <label for="q13a">A) Rivers and streams</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q13" value="b" id="q13b">
+                                <label for="q13b">B) The ocean and seas</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q13" value="c" id="q13c">
+                                <label for="q13c">C) Lakes and ponds</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q13" value="d" id="q13d">
+                                <label for="q13d">D) Waterfalls</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 14 -->
+                    <div class="question-block">
+                        <div class="question">
+                            <span class="question-number">14</span>
+                            Which of these is NOT one of Yemaya's aspects or paths (caminos)?
+                        </div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q14" value="a" id="q14a">
+                                <label for="q14a">A) Yemaya Olokun (depths of the ocean)</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q14" value="b" id="q14b">
+                                <label for="q14b">B) Yemaya Asesu (murky waters)</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q14" value="c" id="q14c">
+                                <label for="q14c">C) Yemaya Ibu Kole (queen of the sweet waters)</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q14" value="d" id="q14d">
+                                <label for="q14d">D) Yemaya Okute</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 15 -->
+                    <div class="question-block">
+                        <div class="question">
+                            <span class="question-number">15</span>
+                            What natural element is most associated with Yemaya's emotional nature?
+                        </div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q15" value="a" id="q15a">
+                                <label for="q15a">A) Fire</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q15" value="b" id="q15b">
+                                <label for="q15b">B) Water (calm and nurturing, yet powerful like the ocean)</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q15" value="c" id="q15c">
+                                <label for="q15c">C) Air</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q15" value="d" id="q15d">
+                                <label for="q15d">D) Earth</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 16 -->
+                    <div class="question-block">
+                        <div class="question">
+                            <span class="question-number">16</span>
+                            Which metal or material is associated with Yemaya?
+                        </div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q16" value="a" id="q16a">
+                                <label for="q16a">A) Gold</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q16" value="b" id="q16b">
+                                <label for="q16b">B) Silver and pearls</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q16" value="c" id="q16c">
+                                <label for="q16c">C) Copper</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q16" value="d" id="q16d">
+                                <label for="q16d">D) Iron</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 17 -->
+                    <div class="question-block">
+                        <div class="question">
+                            <span class="question-number">17</span>
+                            What does the number 7 specifically represent for Yemaya?
+                        </div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q17" value="a" id="q17a">
+                                <label for="q17a">A) The seven days of the week</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q17" value="b" id="q17b">
+                                <label for="q17b">B) The seven seas</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q17" value="c" id="q17c">
+                                <label for="q17c">C) The seven chakras</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q17" value="d" id="q17d">
+                                <label for="q17d">D) The seven continents</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 18 -->
+                    <div class="question-block">
+                        <div class="question">
+                            <span class="question-number">18</span>
+                            Which flower is traditionally associated with Yemaya?
+                        </div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q18" value="a" id="q18a">
+                                <label for="q18a">A) Sunflowers</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q18" value="b" id="q18b">
+                                <label for="q18b">B) White roses and water lilies</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q18" value="c" id="q18c">
+                                <label for="q18c">C) Red carnations</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q18" value="d" id="q18d">
+                                <label for="q18d">D) Purple orchids</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 19 -->
+                    <div class="question-block">
+                        <div class="question">
+                            <span class="question-number">19</span>
+                            Yemaya is known for having which of the following attributes?
+                        </div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q19" value="a" id="q19a">
+                                <label for="q19a">A) Being a skilled cook</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q19" value="b" id="q19b">
+                                <label for="q19b">B) Being highly intuitive</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q19" value="c" id="q19c">
+                                <label for="q19c">C) Being very protective and having a deep love of children</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q19" value="d" id="q19d">
+                                <label for="q19d">D) All of the above</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Question 20 -->
+                    <div class="question-block">
+                        <div class="question">
+                            <span class="question-number">20</span>
+                            What quality is Yemaya most known for among her devotees?
+                        </div>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="q20" value="a" id="q20a">
+                                <label for="q20a">A) Her fierce warrior spirit</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q20" value="b" id="q20b">
+                                <label for="q20b">B) Her nurturing, protective, and unconditionally loving nature</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q20" value="c" id="q20c">
+                                <label for="q20c">C) Her ability to grant wealth</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="q20" value="d" id="q20d">
+                                <label for="q20d">D) Her power over thunder</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="submit-section">
+                        <button type="submit" class="submit-btn"><span>Get My Results!</span></button>
+                    </div>
+                </form>
+
+                <div class="results" id="results">
+                    <h2>Your Yemaya Knowledge Results</h2>
+                    <div class="score" id="scoreDisplay"></div>
+                    <div class="interpretation" id="interpretation"></div>
+                </div>
+
+                <!-- Book CTA -->
+                <div class="book-cta" id="bookCTA" style="display: none;">
+                    <h3>📖 Dive Deeper into Yemaya's Wisdom</h3>
+                    <p>
+                        Love learning about Yemaya? Our beautifully crafted coffee table book celebrates 
+                        the Mother of the Ocean with stunning visuals, sacred rituals, prayers, apatakis, 
+                        and profound spiritual wisdom. Perfect for your altar or as a gift!
+                    </p>
+                    <a href="#" class="book-cta-button">Learn More About the Book</a>
+                </div>
+
+                <div class="answer-key">
+                    <h3>🌊 Answer Key & Explanations</h3>
+                    <div class="answer-item">
+                        <span class="answer-number">1.</span> B) Blue and white - The colors of the ocean, sky, and purity
+                    </div>
+                    <div class="answer-item">
+                        <span class="answer-number">2.</span> C) 7 - Representing the seven seas that Yemaya rules
+                    </div>
+                    <div class="answer-item">
+                        <span class="answer-number">3.</span> B) Gave birth to many Orishas and all life originates from her
+                    </div>
+                    <div class="answer-item">
+                        <span class="answer-number">4.</span> B) The anchor, seashells, and waves - Symbols of her ocean domain
+                    </div>
+                    <div class="answer-item">
+                        <span class="answer-number">5.</span> B) Saturday - The day for honoring and celebrating Yemaya
+                    </div>
+                    <div class="answer-item">
+                        <span class="answer-number">6.</span> B) Watermelon, molasses, and fish - Traditional offerings from the ocean
+                    </div>
+                    <div class="answer-item">
+                        <span class="answer-number">7.</span> B) Yemaya Okute - While war is primarily Oya and Ogun's domain, Yemaya Okute is the warrior path who walks with Ogun
+                    </div>
+                    <div class="answer-item">
+                        <span class="answer-number">8.</span> B) They are sisters - Both powerful water deities with deep connection
+                    </div>
+                    <div class="answer-item">
+                        <span class="answer-number">9.</span> B) Full Moon - Connected to the tides and feminine divine power
+                    </div>
+                    <div class="answer-item">
+                        <span class="answer-number">10.</span> C) Seven - Seven silver bracelets symbolizing her sacred number and royalty
+                    </div>
+                    <div class="answer-item">
+                        <span class="answer-number">11.</span> B) Fish, ducks, and dolphins - Creatures of the water
+                    </div>
+                    <div class="answer-item">
+                        <span class="answer-number">12.</span> B) Our Lady of Regla - The Black Madonna venerated in Cuba
+                    </div>
+                    <div class="answer-item">
+                        <span class="answer-number">13.</span> B) The ocean and seas - Her primary domain of power
+                    </div>
+                    <div class="answer-item">
+                        <span class="answer-number">14.</span> C) Yemaya Ibu Kole (queen of the sweet waters) - Sweet waters are Oshun's domain, not Yemaya's
+                    </div>
+                    <div class="answer-item">
+                        <span class="answer-number">15.</span> B) Water (calm and nurturing, yet powerful like the ocean)
+                    </div>
+                    <div class="answer-item">
+                        <span class="answer-number">16.</span> B) Silver and pearls - Treasures from the ocean depths
+                    </div>
+                    <div class="answer-item">
+                        <span class="answer-number">17.</span> B) The seven seas - Her domain across all the world's oceans
+                    </div>
+                    <div class="answer-item">
+                        <span class="answer-number">18.</span> B) White roses and water lilies - Pure flowers that float on water
+                    </div>
+                    <div class="answer-item">
+                        <span class="answer-number">19.</span> D) All of the above - Yemaya is known for being a skilled cook, highly intuitive, very protective, and having deep love for children
+                    </div>
+                    <div class="answer-item">
+                        <span class="answer-number">20.</span> B) Her nurturing, protective, and unconditionally loving nature
+                    </div>
+                </div>
+
+                <div class="scoring-guide">
+                    <h3>🌊 How Well Do You Know Yemaya?</h3>
+                    <div class="score-range">
+                        <strong>18-20 Correct:</strong> Yemaya Scholar - You have exceptional, deep knowledge of the Mother of the Ocean! Your understanding is truly profound.
+                    </div>
+                    <div class="score-range">
+                        <strong>15-17 Correct:</strong> Yemaya Devotee - Excellent! You have strong, comprehensive knowledge of Yemaya and her sacred traditions.
+                    </div>
+                    <div class="score-range">
+                        <strong>12-14 Correct:</strong> Yemaya Student - Very good! You're developing solid knowledge. Continue your studies to deepen your understanding.
+                    </div>
+                    <div class="score-range">
+                        <strong>9-11 Correct:</strong> Yemaya Apprentice - You're on the right path! Keep learning about the Mother of All and her beautiful traditions.
+                    </div>
+                    <div class="score-range">
+                        <strong>6-8 Correct:</strong> Yemaya Seeker - You're beginning to understand Yemaya. There's so much more wisdom to discover!
+                    </div>
+                    <div class="score-range">
+                        <strong>0-5 Correct:</strong> Yemaya Initiate - Welcome to learning about the Mother of the Ocean! This is just the beginning of a beautiful journey.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const answers = {
+            q1: 'b', q2: 'c', q3: 'b', q4: 'b', q5: 'b',
+            q6: 'b', q7: 'b', q8: 'b', q9: 'b', q10: 'c',
+            q11: 'b', q12: 'b', q13: 'b', q14: 'c', q15: 'b',
+            q16: 'b', q17: 'b', q18: 'b', q19: 'd', q20: 'b'
+        };
+        
+        let userName = '';
+        let userEmail = '';
+        
+        // Email Form Submission
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            userName = document.getElementById('nameInput').value;
+            userEmail = document.getElementById('emailInput').value;
+            
+            // Here you would normally send this to your email service
+            console.log('Name:', userName);
+            console.log('Email:', userEmail);
+            
+            // Hide email section and show quiz
+            document.getElementById('emailSection').style.display = 'none';
+            document.getElementById('quizSection').style.display = 'block';
+            document.getElementById('welcomeMessage').textContent = `Welcome, ${userName}! Let's test your knowledge of Yemaya 🌊`;
+            
+            // Scroll to quiz
+            document.getElementById('quizSection').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Quiz Form Submission
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let score = 0;
+            let allAnswered = true;
+            
+            for (let question in answers) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                if (!selected) {
+                    allAnswered = false;
+                    break;
+                }
+                if (selected.value === answers[question]) {
+                    score++;
+                }
+            }
+            
+            if (!allAnswered) {
+                alert('Please answer all questions before submitting!');
+                return;
+            }
+            
+            // Show results
+            const resultsDiv = document.getElementById('results');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const interpretation = document.getElementById('interpretation');
+            const bookCTA = document.getElementById('bookCTA');
+            
+            scoreDisplay.textContent = `${score} out of 20`;
+            
+            let message = '';
+            if (score >= 18) {
+                message = `🌊 Yemaya Scholar 🌊<br><br>Ashe, ${userName}! You have exceptional, deep knowledge of the Mother of the Ocean! Your understanding of Yemaya\'s sacred traditions, symbols, and spiritual essence is truly profound. You honor her with your wisdom!`;
+            } else if (score >= 15) {
+                message = `💙 Yemaya Devotee 💙<br><br>Wonderful, ${userName}! You have strong, comprehensive knowledge of Yemaya and her sacred traditions. Your dedication to understanding the Mother of All shines through!`;
+            } else if (score >= 12) {
+                message = `🐚 Yemaya Student 🐚<br><br>Great job, ${userName}! You\'re developing solid knowledge of Yemaya. Continue your studies to deepen your understanding of her nurturing power and ocean wisdom.`;
+            } else if (score >= 9) {
+                message = `⭐ Yemaya Apprentice ⭐<br><br>Well done, ${userName}! You\'re on the right path! Keep learning about the Mother of All and her beautiful traditions. There is much depth to discover.`;
+            } else if (score >= 6) {
+                message = `🌊 Yemaya Seeker 🌊<br><br>${userName}, you\'re beginning to understand Yemaya and her sacred ways. There\'s so much more wisdom and beauty to discover about the Mother of the Ocean!`;
+            } else {
+                message = `💫 Yemaya Initiate 💫<br><br>Welcome, ${userName}! This is just the beginning of a beautiful journey into understanding Yemaya\'s nurturing power and profound wisdom.`;
+            }
+            
+            interpretation.innerHTML = message;
+            resultsDiv.style.display = 'block';
+            bookCTA.style.display = 'block';
+            
+            // Log score with user info (for your records)
+            console.log('Quiz completed:', {
+                name: userName,
+                email: userEmail,
+                score: score
+            });
+            
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    </script>
+</body>
+</html>
